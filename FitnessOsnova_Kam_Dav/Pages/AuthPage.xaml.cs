@@ -44,19 +44,8 @@ namespace FitnessOsnova_Kam_Dav.Pages
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             // Navigate to registration page
-            NavigationService.Navigate(new RegisterPage());
+            NavigationService.Navigate(new RegistrationPage());
         }
 
-        //private void ForgotPassword_MouseDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    // Navigate to forgot password page
-        //    NavigationService.Navigate(new ForgotPasswordPage());
-        //}
-
-        private void ForgotPassword_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            // Переход на страницу "Забыли пароль"
-            NavigationService.Navigate(new ForgotPasswordPage());
-        }
     }
 }

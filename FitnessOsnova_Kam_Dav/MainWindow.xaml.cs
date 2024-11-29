@@ -29,7 +29,7 @@ namespace FitnessOsnova_Kam_Dav
 
         private void OpenRegisterPage_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new RegisterPage()); // Переход на страницу регистрации
+            MainFrame.Navigate(new RegistrationPage()); // Переход на страницу регистрации
         }
 
     }
