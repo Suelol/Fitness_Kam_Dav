@@ -9,6 +9,8 @@ namespace FitnessOsnova_Kam_Dav.Pages
 {
     public partial class RegistrationPage : Page
     {
+        private Users newUser;
+
         public RegistrationPage()
         {
             InitializeComponent();
@@ -59,18 +61,23 @@ namespace FitnessOsnova_Kam_Dav.Pages
                     return;
                 }
 
-                var newUsers = new Users
+                using (FitnessClub_Kam_DavEntities1 db = new FitnessClub_Kam_DavEntities1())
                 {
-                    Name = name,
-                    Login = login,
-                    Password = password
-                    // Не устанавливайте значение для UserID, оно будет сгенерировано автоматически
-                };
+                    var newUser = new Users
+                    {
+                        Name = "Имя",
+                        Login = "Логин",
+                        Password = "Пароль"
+                    };
+
+                    db.Users.Add(newUser);
+                    db.SaveChanges();
+                }
 
                 try
                 {
                     // Добавление нового пользователя
-                    context.Users.Add(newUsers);
+                    context.Users.Add(newUser);
                     context.SaveChanges(); // Сохранение изменений в базе данных
 
                     MessageBox.Show("Регистрация прошла успешно!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
