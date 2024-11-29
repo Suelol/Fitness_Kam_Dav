@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FitnessOsnova_Kam_Dav.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace FitnessOsnova_Kam_Dav
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new AuthPage()); // Загрузка начальной страницы
         }
+
+        private void OpenRegisterPage_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new RegisterPage()); // Переход на страницу регистрации
+        }
+
     }
 }

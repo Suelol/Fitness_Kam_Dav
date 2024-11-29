@@ -1,28 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FitnessOsnova_Kam_Dav.DbModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FitnessOsnova_Kam_Dav.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для AuthPage.xaml
-    /// </summary>
     public partial class AuthPage : Page
     {
         public AuthPage()
         {
             InitializeComponent();
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            string username = UsernameTextBox.Text;
+            string password = PasswordBox.Password;
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Введите логин и пароль");
+                return;
+            }
+
+            using (FitnessClub_Kam_DavEntities1 db = new FitnessClub_Kam_DavEntities1())
+            {
+                var user = db.Users.FirstOrDefault(u => u.Login == username && u.Password == password);
+
+                if (user != null)
+                {
+                    // User authenticated, navigate to main page
+                    NavigationService.Navigate(new MainPage());
+                }
+                else
+                {
+                    MessageBox.Show("Неправильный логин или пароль");
+                }
+            }
+        }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Navigate to registration page
+            NavigationService.Navigate(new RegisterPage());
+        }
+
+        //private void ForgotPassword_MouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    // Navigate to forgot password page
+        //    NavigationService.Navigate(new ForgotPasswordPage());
+        //}
+
+        private void ForgotPassword_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            // Переход на страницу "Забыли пароль"
+            NavigationService.Navigate(new ForgotPasswordPage());
         }
     }
 }
