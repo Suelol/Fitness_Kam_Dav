@@ -37,6 +37,7 @@
           <Property Name="RegistrationDate" Type="datetime" />
           <Property Name="Goals" Type="nvarchar" MaxLength="255" />
           <Property Name="Preferences" Type="nvarchar" MaxLength="255" />
+          <Property Name="UserID" Type="int" />
         </EntityType>
         <EntityType Name="Feedback">
           <Key>
@@ -111,6 +112,15 @@
           <Property Name="Schedule" Type="datetime" Nullable="false" />
           <Property Name="Duration" Type="int" />
           <Property Name="MaxParticipants" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK__Attendanc__Clien__44FF419A">
           <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
@@ -244,6 +254,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Clients_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище FitnessClub_Kam_DavModelContainer">
           <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
@@ -255,6 +277,7 @@
           <EntitySet Name="MembershipTypes" EntityType="Self.MembershipTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trainers" EntityType="Self.Trainers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trainings" EntityType="Self.Trainings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Attendanc__Clien__44FF419A" Association="Self.FK__Attendanc__Clien__44FF419A">
             <End Role="Clients" EntitySet="Clients" />
             <End Role="Attendance" EntitySet="Attendance" />
@@ -299,6 +322,10 @@
             <End Role="Trainers" EntitySet="Trainers" />
             <End Role="Trainings" EntitySet="Trainings" />
           </AssociationSet>
+          <AssociationSet Name="FK_Clients_Users" Association="Self.FK_Clients_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -341,11 +368,13 @@
           <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
           <Property Name="Goals" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Preferences" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
           <NavigationProperty Name="Attendance" Relationship="Self.FK__Attendanc__Clien__44FF419A" FromRole="Clients" ToRole="Attendance" />
           <NavigationProperty Name="Bookings" Relationship="Self.FK__Bookings__Client__52593CB8" FromRole="Clients" ToRole="Bookings" />
           <NavigationProperty Name="MembershipTypes" Relationship="Self.FK__Clients__Members__3E52440B" FromRole="Clients" ToRole="MembershipTypes" />
           <NavigationProperty Name="Feedback" Relationship="Self.FK__Feedback__Client__4E88ABD4" FromRole="Clients" ToRole="Feedback" />
           <NavigationProperty Name="FinancialTransactions" Relationship="Self.FK__Financial__Clien__48CFD27E" FromRole="Clients" ToRole="FinancialTransactions" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Clients_Users" FromRole="Clients" ToRole="Users" />
         </EntityType>
         <EntityType Name="Feedback">
           <Key>
@@ -434,6 +463,16 @@
           <NavigationProperty Name="Gyms" Relationship="Self.FK__Trainings__GymID__4222D4EF" FromRole="Trainings" ToRole="Gyms" />
           <NavigationProperty Name="Trainers" Relationship="Self.FK__Trainings__Train__412EB0B6" FromRole="Trainings" ToRole="Trainers" />
         </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Clients_Users" FromRole="Users" ToRole="Clients" />
+        </EntityType>
         <Association Name="FK__Attendanc__Clien__44FF419A">
           <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
           <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
@@ -518,6 +557,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Clients_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Feedback__Traine__4F7CD00D">
           <End Role="Trainers" Type="Self.Trainers" Multiplicity="0..1" />
           <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
@@ -566,7 +617,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="FitnessClub_Kam_DavEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="FitnessClub_Kam_DavEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Attendance" EntityType="Self.Attendance" />
           <EntitySet Name="Bookings" EntityType="Self.Bookings" />
           <EntitySet Name="Clients" EntityType="Self.Clients" />
@@ -577,6 +628,7 @@
           <EntitySet Name="MembershipTypes" EntityType="Self.MembershipTypes" />
           <EntitySet Name="Trainers" EntityType="Self.Trainers" />
           <EntitySet Name="Trainings" EntityType="Self.Trainings" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
           <AssociationSet Name="FK__Attendanc__Clien__44FF419A" Association="Self.FK__Attendanc__Clien__44FF419A">
             <End Role="Clients" EntitySet="Clients" />
             <End Role="Attendance" EntitySet="Attendance" />
@@ -605,6 +657,10 @@
             <End Role="Clients" EntitySet="Clients" />
             <End Role="FinancialTransactions" EntitySet="FinancialTransactions" />
           </AssociationSet>
+          <AssociationSet Name="FK_Clients_Users" Association="Self.FK_Clients_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
           <AssociationSet Name="FK__Feedback__Traine__4F7CD00D" Association="Self.FK__Feedback__Traine__4F7CD00D">
             <End Role="Trainers" EntitySet="Trainers" />
             <End Role="Feedback" EntitySet="Feedback" />
@@ -627,7 +683,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище FitnessClub_Kam_DavModelContainer" CdmEntityContainer="FitnessClub_Kam_DavEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище FitnessClub_Kam_DavModelContainer" CdmEntityContainer="FitnessClub_Kam_DavEntities1">
           <EntitySetMapping Name="Attendance">
             <EntityTypeMapping TypeName="FitnessClub_Kam_DavModel.Attendance">
               <MappingFragment StoreEntitySet="Attendance">
@@ -661,6 +717,7 @@
                 <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
                 <ScalarProperty Name="Goals" ColumnName="Goals" />
                 <ScalarProperty Name="Preferences" ColumnName="Preferences" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -742,6 +799,16 @@
                 <ScalarProperty Name="Schedule" ColumnName="Schedule" />
                 <ScalarProperty Name="Duration" ColumnName="Duration" />
                 <ScalarProperty Name="MaxParticipants" ColumnName="MaxParticipants" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="FitnessClub_Kam_DavModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

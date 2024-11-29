@@ -13,10 +13,10 @@ namespace FitnessOsnova_Kam_Dav.DbModel
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FitnessClub_Kam_DavEntities : DbContext
+    public partial class FitnessClub_Kam_DavEntities1 : DbContext
     {
-        public FitnessClub_Kam_DavEntities()
-            : base("name=FitnessClub_Kam_DavEntities")
+        public FitnessClub_Kam_DavEntities1()
+            : base("name=FitnessClub_Kam_DavEntities1")
         {
         }
     
@@ -35,5 +35,6 @@ namespace FitnessOsnova_Kam_Dav.DbModel
         public virtual DbSet<MembershipTypes> MembershipTypes { get; set; }
         public virtual DbSet<Trainers> Trainers { get; set; }
         public virtual DbSet<Trainings> Trainings { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

@@ -32,6 +32,7 @@ namespace FitnessOsnova_Kam_Dav.DbModel
         public Nullable<System.DateTime> RegistrationDate { get; set; }
         public string Goals { get; set; }
         public string Preferences { get; set; }
+        public Nullable<int> UserID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Attendance> Attendance { get; set; }
@@ -42,5 +43,6 @@ namespace FitnessOsnova_Kam_Dav.DbModel
         public virtual ICollection<Feedback> Feedback { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FinancialTransactions> FinancialTransactions { get; set; }
+        public virtual Users Users { get; set; }
     }
 }
