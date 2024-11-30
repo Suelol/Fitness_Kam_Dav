@@ -121,6 +121,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK__Attendanc__Clien__44FF419A">
           <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
@@ -471,6 +472,7 @@
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Clients" Relationship="Self.FK_Clients_Users" FromRole="Users" ToRole="Clients" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK__Attendanc__Clien__44FF419A">
           <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
@@ -804,6 +806,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="FitnessClub_Kam_DavModel.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Login" ColumnName="Login" />

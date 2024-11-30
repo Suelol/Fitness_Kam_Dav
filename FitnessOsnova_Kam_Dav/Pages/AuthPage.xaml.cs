@@ -32,7 +32,7 @@ namespace FitnessOsnova_Kam_Dav.Pages
                 if (user != null)
                 {
                     // User authenticated, navigate to main page
-                    NavigationService.Navigate(new MainPage());
+                    NavigationService.Navigate(new UserProfilePage(user.UserID));
                 }
                 else
                 {
