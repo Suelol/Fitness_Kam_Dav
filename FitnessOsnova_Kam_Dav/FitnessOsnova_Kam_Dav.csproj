@@ -82,6 +82,7 @@
     <Compile Include="DbModel\Clients.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DbModel\ConnectionClass.cs" />
     <Compile Include="DbModel\Feedback.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
