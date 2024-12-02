@@ -1,28 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FitnessOsnova_Kam_Dav.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
-    /// </summary>
     public partial class MainPage : Page
     {
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        private void UserProfileButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Переход на страницу профиля пользователя
+            NavigationService.Navigate(new UserProfilePage(CurrentUser.ID));
+        }
+
+        private void TrainingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Переход на страницу тренировок
+            NavigationService.Navigate(new TrainingsPage());
+        }
+
+        private void FeedbackButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Переход на страницу отзывов
+            NavigationService.Navigate(new FeedbackPage());
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Выход из системы и переход на страницу авторизации
+            NavigationService.Navigate(new AuthPage());
         }
     }
 }

@@ -23,8 +23,10 @@ namespace FitnessOsnova_Kam_Dav
     {
         public MainWindow()
         {
-            InitializeComponent();
-            MainFrame.Navigate(new AuthPage()); // Загрузка начальной страницы
+           
+                InitializeComponent();
+                MainFrame.Navigate(new AuthPage()); // Загрузка начальной страницы
+            
         }
 
         private void OpenRegisterPage_Click(object sender, RoutedEventArgs e)

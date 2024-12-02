@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FitnessOsnova_Kam_Dav.Pages;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,15 @@ namespace FitnessOsnova_Kam_Dav
     /// </summary>
     public partial class App : Application
     {
+        //protected override void OnStartup(StartupEventArgs e)
+        //{
+        //    base.OnStartup(e);
+        //    var authPage = new AuthPage();
+        //    var mainWindow = new MainWindow();
+        //    mainWindow.Content = authPage;
+        //    mainWindow.Show();
+        //    //Application.Current.MainWindow = mainWindow;
+        //}
     }
+    
 }
