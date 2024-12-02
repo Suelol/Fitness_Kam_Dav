@@ -1,0 +1,63 @@
+﻿<Page
+    x:Class="FitnessOsnova_Kam_Dav.Pages.FeedbackPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:FitnessOsnova_Kam_Dav.Classes"
+    Title="Отзывы">
+
+
+    <Grid>
+        <TextBlock
+            Margin="10"
+            FontSize="24"
+            FontWeight="Bold"
+            Text="Отзывы" />
+
+        <ListView x:Name="FeedbackListView" Margin="10,50,10,150">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="16" Text="{Binding Comment}" />
+                        <TextBlock
+                            FontSize="14"
+                            Foreground="Gray"
+                            Text="{Binding Rating}" />
+                        <TextBlock
+                            FontSize="12"
+                            Foreground="DarkGray"
+                            Text="{Binding FeedbackDate}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <TextBox
+            x:Name="CommentTextBox"
+            Height="60"
+            Margin="10,220,10,0"
+            VerticalAlignment="Top" />
+        <TextBox
+            x:Name="RatingTextBox"
+            Height="30"
+            Margin="10,290,10,0"
+            VerticalAlignment="Top" />
+        <Button
+            Margin="10,330,10,0"
+            VerticalAlignment="Top"
+            Click="AddFeedbackButton_Click"
+            Content="Добавить отзыв" />
+
+        <TextBlock
+            Margin="10,220,10,0"
+            VerticalAlignment="Top"
+            Foreground="LightGray"
+            IsHitTestVisible="False"
+            Text="Ваш отзыв..." />
+        <TextBlock
+            Margin="10,290,10,0"
+            VerticalAlignment="Top"
+            Foreground="LightGray"
+            IsHitTestVisible="False"
+            Text="Оценка (1-5)..." />
+    </Grid>
+</Page>

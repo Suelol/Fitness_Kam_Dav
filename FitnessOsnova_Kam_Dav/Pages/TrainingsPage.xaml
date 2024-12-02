@@ -1,0 +1,25 @@
+﻿<Page x:Class="FitnessOsnova_Kam_Dav.Pages.TrainingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Тренировки"
+      Background="#f9f9f9">
+
+    <Grid>
+        <TextBlock Text="Доступные тренировки" FontSize="24" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,20,0,20" Foreground="#333"/>
+
+        <ListView x:Name="TrainingsListView" Margin="20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="{Binding Title}" FontWeight="Bold" FontSize="16" Foreground="#333"/>
+                        <TextBlock Text="{Binding Description}" FontSize="14" Foreground="#555"/>
+                        <Button Content="Записаться" Click="EnrollButton_Click" 
+                                Margin="0,5,0,0" Height="30" 
+                                Style="{StaticResource ButtonStyle}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

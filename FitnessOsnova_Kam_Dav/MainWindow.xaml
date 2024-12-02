@@ -6,8 +6,8 @@
     xmlns:local="clr-namespace:FitnessOsnova_Kam_Dav"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
-    Width="800"
-    Height="450"
+    Width="900"
+    Height="650"
     mc:Ignorable="d">
     <Grid>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" />

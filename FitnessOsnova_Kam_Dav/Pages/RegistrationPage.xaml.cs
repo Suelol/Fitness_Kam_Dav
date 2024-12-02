@@ -36,9 +36,10 @@ namespace FitnessOsnova_Kam_Dav.Pages
             string login = LoginTextBox.Text;
             string password = PasswordBox.Password;
             string confirmPassword = ConfirmPasswordBox.Password;
+            string email = EmailTextBox.Text; // Получаем email
 
             // Проверка на пустые поля
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(email))
             {
                 MessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -61,14 +62,13 @@ namespace FitnessOsnova_Kam_Dav.Pages
                     return;
                 }
 
-                
-
                 try
                 {
-                    us.Name = NameTextBox.Text;
-                    us.Login = LoginTextBox.Text;
-                    us.Password = PasswordBox.Password;
-                    // Добавление нового пользователя
+                    us.Name = name;
+                    us.Login = login;
+                    us.Password = password;
+                    us.Email = email; // Сохраняем email
+                                      // Добавление нового пользователя
                     context.Users.Add(us);
                     context.SaveChanges(); // Сохранение изменений в базе данных
 
@@ -91,4 +91,4 @@ namespace FitnessOsnova_Kam_Dav.Pages
             }
         }
     }
-}
+    }
