@@ -137,11 +137,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\FinancialTransactionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\GymsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RegistrationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TrainersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,11 +173,20 @@
     <Compile Include="Pages\FeedbackPage.xaml.cs">
       <DependentUpon>FeedbackPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FinancialTransactionsPage.xaml.cs">
+      <DependentUpon>FinancialTransactionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GymsPage.xaml.cs">
+      <DependentUpon>GymsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TrainersPage.xaml.cs">
+      <DependentUpon>TrainersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TrainingsPage.xaml.cs">
       <DependentUpon>TrainingsPage.xaml</DependentUpon>
