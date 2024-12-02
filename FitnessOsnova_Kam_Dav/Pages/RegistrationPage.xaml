@@ -34,6 +34,8 @@
 
             <Label Content="Подтверждение пароля:" />
             <PasswordBox Name="ConfirmPasswordBox" Margin="0,0,0,20" />
+            <TextBox x:Name="EmailTextBox" ="Введите электронную почту" />
+            <!-- Поле Email -->
 
             <Button Click="RegisterButton_Click" Content="Зарегистрироваться" />
         </StackPanel>
